@@ -39,12 +39,13 @@ This repository contains documentation for the AI-driven PKI management architec
 | **pki-AI-Agents** |The running Agent for cryptography using python| [View](./pki-AI-Agents) |
 
 
-## Quick Start
-
-1. **Understand the problem**: Read this README
-2. **Learn the architecture**: Start with [Architecture.md](./Architecture.md)
-3. **Understand design decisions**: Review [MCP.md](./MCP.md), [Frameworks.md](./Frameworks.md), and [MultiAgent.md](./MultiAgent.md)
-4. **See it in action**: Check [Implementation.md](./Implementation.md) for practical examples
+## POC
+A proof-of-concept implementation is available in the `pki-AI-Agents` folder. It includes:
+- An orchestrator that coordinates agents
+- Sample agents for key generation, CSR creation, certificate issuance
+- Example policies and audit logging
+-Created using python
+-To run, simply execute the `main.py` file in the `pki-AI-Agents` directory.
 
 ## Core Principles
 
@@ -85,18 +86,11 @@ This isn't just about automating PKI—it's about showing how AI agents can safe
 Read the documentation in order:
 1. This README (you are here)
 2. [Architecture.md](./Architecture.md) - System design
-3. [MultiAgent.md](./MultiAgent.md) - Why multi-agent?
-4. [MCP.md](./MCP.md) & [Frameworks.md](./Frameworks.md) - Design decisions
-5. [Implementation.md](./Implementation.md) - How to build it
-
-## POC
-A proof-of-concept implementation is available in the `pki-AI-Agents` folder. It includes:
-- An orchestrator that coordinates agents
-- Sample agents for key generation, CSR creation, certificate issuance
-- Example policies and audit logging
--Created using python
--To run, simply execute the `main.py` file in the `pki-AI-Agents` directory.
-
+3. [Workflows.md](./Workflows.md) - Orchestration flows
+4. [Policies.md](./Policies.md) - Security rules
+5. [Tools.md](./Tools.md) - Tools used
+6. [Result.md](./Result.md) - How to build it
+7. [pki-AI-Agents](./pki-AI-Agents) - POC- Running Agent for cryptography using python
 
 
 
