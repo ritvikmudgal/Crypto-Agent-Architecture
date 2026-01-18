@@ -8,8 +8,30 @@ Every request goes through policy checks before execution, and everything gets l
 
 ### High-Level Architecture
 
-![Flowchart](/Users/ritvikmudgal/VS-CODE/Crypto-Agent-Architecture/Graph-based-RAG-Pipeline.png)
-
+```mermaid
+graph TB
+    User[Operator/API Request] --> Orch[Orchestrator Agent<br/>Claude]
+    
+    Orch --> Policy[Policy Agent]
+    Orch --> KeyMgmt[Key Management Agent]
+    Orch --> Cert[Certificate Agent]
+    Orch --> Inv[Inventory Agent]
+    Orch --> Audit[Audit Agent]
+    
+    Policy --> PolicyDB[(Policy Rules<br/>NIST/Internal)]
+    KeyMgmt --> Vault[Vault/HSM<br/>APIs]
+    Cert --> OpenSSL[OpenSSL<br/>CLI/API]
+    Cert --> CA[Certificate Authority<br/>ACME/REST]
+    Inv --> DB[(PostgreSQL<br/>Asset DB)]
+    Audit --> AuditLog[(Immutable Logs<br/>CloudWatch/SIEM)]
+    
+    style Orch fill:#4A90E2,stroke:#2E5C8A,color:#fff
+    style Policy fill:#E8B339,stroke:#B8860B,color:#fff
+    style KeyMgmt fill:#50C878,stroke:#2F8F50,color:#fff
+    style Cert fill:#9B59B6,stroke:#6C3483,color:#fff
+    style Inv fill:#E67E22,stroke:#A04000,color:#fff
+    style Audit fill:#E74C3C,stroke:#A93226,color:#fff
+```
 
 **Core Principle**: AI plans and validates. Trusted tools execute. Policy gates everything.
 
