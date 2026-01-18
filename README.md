@@ -1,31 +1,102 @@
-# AI-Driven Cryptographic Agent
+# AI-Driven PKI Lifecycle Management System
 
-This repository presents a clear, structured design for an AI agent that manages cryptographic tasks using standard tools and policies.
+## Problem Statement
 
-It improves on basic designs by breaking content into multiple focused `.md` files for clarity, maintainability, and readability.
+Modern digital infrastructure depends heavily on Public Key Infrastructure (PKI) for trust, identity, and secure communications. However, managing cryptographic keys and certificates is often messy, manual, and error-prone. This leads to:
 
-## 📂 Repo Structure
+- **Security risks**: Weak keys, expired certificates, inconsistent policies
+- **Operational headaches**: Service outages from cert expiry, manual renewals, poor visibility
+- **Compliance gaps**: Missing audit trails, policy violations, unclear accountability
 
-Each file explains one key part of the agent design:
+Traditional solutions either rely on manual processes (error-prone) or rigid workflow engines (inflexible). We need something smarter—a system that can reason about cryptographic workflows while staying safely within security boundaries.
 
-- `architecture.md` — System overview  
-- `workflows.md` — How operations happen step-by-step  
-- `policies.md` — Rules & safety guardrails  
-- `tools.md` — Tools and integrations  
-- `audit.md` — Logging & compliance
+## Our Solution
 
----
+An **AI-driven multi-agent architecture** where Claude orchestrates PKI operations through specialized agents. The key principle: **AI plans and validates, trusted tools execute crypto operations**.
 
-## 📌 How to use
+The system handles:
+- Key pair generation (RSA, ECC) via Vault/HSM
+- CSR creation and validation using OpenSSL
+- Certificate issuance, renewal, and revocation through CAs
+- Policy enforcement as guardrails (key sizes, validity, usage)
+- Asset inventory tracking and expiry monitoring
+- Complete audit trails for compliance
 
-1. Read `architecture.md` first  
-2. Review `policies.md` before workflows  
-3. Check tools before you implement anything
+## Project Structure
 
----
+This repository contains documentation for the AI-driven PKI management architecture:
 
-## 🧠 Summary
+| File | Description | Link |
+|------|-------------|------|
+| **Architecture.md** | Complete system architecture with multi-agent design, orchestration flows, and security boundaries | [View](./pki_architecture.md) |
+| **MCP.md** | Analysis of Model Context Protocol - whether to use it and why | [View](./MCP.md) |
+| **Frameworks.md** | Evaluation of AI frameworks (LangChain, Graph RAG) and design decisions | [View](./Frameworks.md) |
+| **MultiAgent.md** | Deep dive into multi-agent architecture benefits and trade-offs | [View](./MultiAgent.md) |
+| **Result.md** | The Result of this assignment with code examples and best practices | [View](./Result.md) |
+| **Tools.md** | Tools used in the implementation | [View](./Tools.md) |
+| **Workflows.md** | The workflows and orchestration logic | [View](./Workflows.md) |
+| **Policies.md** | Policies and validation rules | [View](./Policies.md) |
+| **pki-AI-Agents** |The running Agent for cryptography using python| [View](./pki-AI-Agents) |
 
-This design uses Claude as a **plan-and-orchestrate agent**, not a cryptography engine.  
-All cryptographic work is done via trusted tools — Claude only **coordinates**, **validates**, and **logs** decisions.
+
+## Quick Start
+
+1. **Understand the problem**: Read this README
+2. **Learn the architecture**: Start with [Architecture.md](./Architecture.md)
+3. **Understand design decisions**: Review [MCP.md](./MCP.md), [Frameworks.md](./Frameworks.md), and [MultiAgent.md](./MultiAgent.md)
+4. **See it in action**: Check [Implementation.md](./Implementation.md) for practical examples
+
+## Core Principles
+
+1. **AI orchestrates, never executes crypto**: Claude plans workflows but never touches private keys or performs cryptographic math
+2. **Policy as guardrails**: Security rules enforced programmatically before any operation
+3. **Separation of concerns**: Each agent has a single, well-defined responsibility
+4. **Audit everything**: Immutable logs for every decision and action
+5. **Use battle-tested tools**: Rely on OpenSSL, Vault, established CAs—don't reinvent crypto
+
+## Key Benefits
+
+- **Security**: No crypto in AI layer, policy enforcement at every step
+- **Flexibility**: Natural language interface for complex operations
+- **Reliability**: Automated renewals, proactive expiry monitoring
+- **Compliance**: Complete audit trails, policy version tracking
+- **Extensibility**: Easy to add new agents (e.g., post-quantum migration)
+
+## Technologies Used
+
+- **Agent Layer**: Claude API (Sonnet 4)
+- **Key Management**: HashiCorp Vault / AWS KMS
+- **Crypto Operations**: OpenSSL
+- **Certificate Authority**: Internal CA or ACME
+- **Storage**: PostgreSQL for inventory
+- **Audit**: CloudWatch / Splunk for immutable logs
+
+## Why This Matters
+
+This isn't just about automating PKI—it's about showing how AI agents can safely handle security-critical operations when properly constrained. The architecture demonstrates:
+
+- How to keep AI away from sensitive operations while still being useful
+- When to use (and not use) popular AI frameworks
+- How multi-agent design improves auditability and testability
+- How to build enterprise-grade systems with AI orchestration
+
+## Getting Started
+
+Read the documentation in order:
+1. This README (you are here)
+2. [Architecture.md](./Architecture.md) - System design
+3. [MultiAgent.md](./MultiAgent.md) - Why multi-agent?
+4. [MCP.md](./MCP.md) & [Frameworks.md](./Frameworks.md) - Design decisions
+5. [Implementation.md](./Implementation.md) - How to build it
+
+## POC
+A proof-of-concept implementation is available in the `pki-AI-Agents` folder. It includes:
+- An orchestrator that coordinates agents
+- Sample agents for key generation, CSR creation, certificate issuance
+- Example policies and audit logging
+-Created using python
+-To run, simply execute the `main.py` file in the `pki-AI-Agents` directory.
+
+
+
 

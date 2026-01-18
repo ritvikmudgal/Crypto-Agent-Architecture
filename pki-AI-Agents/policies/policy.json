@@ -1,0 +1,6 @@
+{
+  "min_rsa_bits": 3072,
+  "max_cert_days": 397,
+  "allowed_ekus": ["serverAuth"],
+  "allowed_algorithms": ["RSA"]
+}
