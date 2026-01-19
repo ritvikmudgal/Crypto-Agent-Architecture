@@ -36,16 +36,17 @@ This repository contains documentation for the AI-driven PKI management architec
 | **Tools.md** | Tools used in the implementation | [View](./Tools.md) |
 | **Workflows.md** | The workflows and orchestration logic | [View](./Workflows.md) |
 | **Policies.md** | Policies and validation rules | [View](./Policies.md) |
-| **bedrock_agent-aws.py** | The running Agent for cryptography using python and AWS Bedrock | [View](./bedrock_agent-aws.py) |
+| **Running Agent** | The running Agent for cryptography using python and AWS Bedrock | [View](./Running-Agent) |
 
 
 ## POC
-A proof-of-concept implementation is available in the `bedrock_agent-aws.py` file. It includes: 
+A proof-of-concept implementation is available in the `Running-Agent` folder. It includes: 
 - Basic Claude API integration
 - Sample workflows for key generation, CSR creation, and certificate issuance
 - A dummy policy enforcement example
 - Interactive chat interface for testing
 - Sample agents for key generation, CSR creation, certificate issuance
+- crypto, pki, policy plugins 
 
 ## Core Principles
 
@@ -90,7 +91,7 @@ Read the documentation in order:
 4. [Policies.md](./Policies.md) - Security rules
 5. [Tools.md](./Tools.md) - Tools used
 6. [Result.md](./Result.md) - How to build it
-7. [Running Agent](./bedrock_agent-aws.py) - POC- Running Agent for cryptography using python and AWS Bedrock
+7. [Running Agent](./Running-Agent) - POC- Running Agent for cryptography using python and AWS Bedrock
 
 
 
