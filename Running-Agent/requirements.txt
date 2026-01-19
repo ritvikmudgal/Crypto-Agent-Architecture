@@ -1,0 +1,12 @@
+# AWS Bedrock SDK
+boto3==1.34.20
+botocore==1.34.20
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# Cryptography library (approved for key/cert operations)
+cryptography==42.0.0
+
+# Additional utilities
+typing-extensions==4.9.0
