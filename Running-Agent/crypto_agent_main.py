@@ -5,14 +5,13 @@ This agent orchestrates cryptographic operations without performing crypto math 
 
 import os
 import json
-import boto3
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 import sys
 
 # Load environment variables
-load_dotenv()
+#load_dotenv()
 
 class CryptoAgentConfig:
     """Configuration management for the crypto agent"""
@@ -20,11 +19,11 @@ class CryptoAgentConfig:
         self.aws_access_key = os.getenv('AWS_ACCESS_KEY_ID')
         self.aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
         self.aws_region = os.getenv('AWS_REGION', 'us-east-1')
-        self.bedrock_model_id = os.getenv('BEDROCK_MODEL_ID', 'anthropic.claude-3-5-sonnet-20241022-v2:0')
+        self.bedrock_model_id = os.getenv('BEDROCK_MODEL_ID', 'anthropic.claude-3-haiku-20240307-v1:0')
         
         # Validate required configs
-        if not all([self.aws_access_key, self.aws_secret_key]):
-            raise ValueError("AWS credentials not found in .env file")
+        # if not all([self.aws_access_key, self.aws_secret_key]):
+        #     raise ValueError("AWS credentials not found in .env file")
 
 class MCPPluginManager:
     """Manages MCP plugins for cryptographic operations"""
@@ -69,13 +68,13 @@ class BedrockCryptoAgent:
         self.plugin_manager = MCPPluginManager()
         self.conversation_history = []
         
-        # Initialize Bedrock client
+        import boto3
+
         self.bedrock_client = boto3.client(
-            service_name='bedrock-runtime',
-            region_name=self.config.aws_region,
-            aws_access_key_id=self.config.aws_access_key,
-            aws_secret_access_key=self.config.aws_secret_key
+            "bedrock-runtime",
+            region_name="us-east-1"
         )
+
         
         print(f"✓ Connected to AWS Bedrock in region: {self.config.aws_region}")
     
